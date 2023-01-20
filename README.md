@@ -29,6 +29,9 @@ Examples:
 * Search for customers that their name ends with "smith" and age bigger than 37.
 * Search in products by product barcode and the product price should be less than $1,000.
     
+    
+![chrome_eyWNXg1uPQ](https://user-images.githubusercontent.com/25286081/213617794-2484c2e0-8a8a-4b01-8357-7fe80bb7610e.gif)
+
 ---
 
 <h3 id="toc" class="alt">Available Links</h3>
