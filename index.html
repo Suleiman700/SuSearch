@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SuSearch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/prism.css">
+    <link rel="stylesheet" href="./libs/SuSearch/SuSearch.css">
+</head>
+<body>
+<link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+<div class="app-container">
+    <div class="left-area">
+        <div class="app-name">Navigation</div>
+        <a href="index.html" class="item-link active">
+            Play Ground
+        </a>
+        <a href="guide.html" class="item-link">
+            Simple Guide
+        </a>
+        <a href="./Document/index.html" class="item-link" target="_blank">
+            Full Documentation
+        </a>
+        <p><strong>Demos</strong></p>
+        <a href="demo_1.html" class="item-link">
+            Country Search
+        </a>
+        <a href="demo_2.html" class="item-link">
+            Phone Search
+        </a>
+        <a href="demo_3.html" class="item-link">
+            Users Search
+        </a>
+        <a href="demo_4.html" class="item-link">
+            Products Search
+        </a>
+    </div>
+    <div class="main-area">
+        <button class="btn-show-right-area">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-chevron-left">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
+        </button>
+        <button class="btn-show-left-area">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+
+        <section class="content-section">
+            <div class="col-sm-12 text-center">
+                <h1 class="section-header"></h1>
+                <h1 class="fuzzy-font"><strong>SuSearch</strong></h1>
+                <h5 class="fuzzy-font">A Fuzzy JavaScript Library That Allows You To Search In A Large Amount Of Data</h5>
+
+                <div class="py-5">
+                    <div id="SuSearchParent"></div>
+                    <small class="text-muted">Search By Title / Actors</small>
+                    <div>
+
+                    </div>
+                </div>
+
+                <div class="py-5">
+                    <pre><code class="language-js" id="callback_output">
+Pick item from the dropdown and the callback will appear here
+                    </code></pre>
+                    <small class="text-muted">Callback</small>
+                </div>
+
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#COLLAPSE_search_settings">Search Settings</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#COLLAPSE_search_field_settings">Search Field Settings</button>
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#COLLAPSE_dropdown_settings">Dropdown Settings</button>
+                <div id="COLLAPSE_search_settings" class="collapse pt-3">
+                    <form class="py-3">
+                        <div class="form-group row pt-3">
+                            <label for="Debug" class="col-sm-4 col-form-label">Debug <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Enable or disable debug (see it in the console tab)"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="Debug">
+                                    <option value="false">False</option>
+                                    <option value="true" selected>True</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="CaseSensitive" class="col-sm-4 col-form-label">Case sensitive <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Uppercase and Lowercase letters will be taken into consideration"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="CaseSensitive">
+                                    <option value="false" selected>False</option>
+                                    <option value="true">True</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="MaxNumOfSearches" class="col-sm-4 col-form-label">Max number of searches <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set the maximum number of searched (useful if you want to limit the number of searched in a big data) --- Set 0 for unlimited searched"></i></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="MaxNumOfSearches" value="0" placeholder="Set 0 for unlimited">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="PercentOfPerfectScore" class="col-sm-4 col-form-label">Get results with minimum score <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Will only get the results that have the minimum score"></i></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="PercentOfPerfectScore" value="90" placeholder="90">
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary" id="BTN_search_settings">Save</button>
+                </div>
+                <div id="COLLAPSE_search_field_settings" class="collapse pt-3">
+                    <form class="py-3">
+                        <div class="form-group row pt-3">
+                            <label for="type" class="col-sm-4 col-form-label">Type <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Search field type"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="type" value="text" placeholder="text">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="class" class="col-sm-4 col-form-label">Class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Custom search field class"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="class" value="form-control text-primary" placeholder="form-control text-primary">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="placeholder" class="col-sm-4 col-form-label">Placeholder <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set the search field's placeholder"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="placeholder" value="Search here" placeholder="Enter placeholder here">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="dir" class="col-sm-4 col-form-label">Dir <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Search field text direction"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="dir">
+                                    <option value="auto" selected>auto</option>
+                                    <option value="ltr">ltr</option>
+                                    <option value="rtl">rtl</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="clear_on_pick" class="col-sm-4 col-form-label">Clear input on pick <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Clear search field text after picking item from the dropdown"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="clear_on_pick">
+                                    <option value="true">True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="style" class="col-sm-4 col-form-label">Style <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for the search field"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="style" value="display: grid; height: 50px; width: 50vw; margin: auto; text-align: center;" placeholder="Enter custom style">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="search_after_delay" class="col-sm-4 col-form-label">Search delay <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Perform search after user stop typing (in milliseconds)"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="search_after_delay">
+                                    <option value="false">Off</option>
+                                    <option value="250" selected>250ms</option>
+                                    <option value="500">500ms</option>
+                                    <option value="1000">1000ms</option>
+                                    <option value="1500">1500ms</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="autocomplete" class="col-sm-4 col-form-label">Autocomplete <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Enable or disable autocomplete"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="autocomplete">
+                                    <option value="off" selected>Off</option>
+                                    <option value="on">On</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary" id="BTN_search_field_settings">Save</button>
+                </div>
+                <div id="COLLAPSE_dropdown_settings" class="collapse pt-3">
+                    <form class="py-3">
+                        <h6>Normal Settings</h6>
+                        <div class="form-group row pt-3">
+                            <label for="MaxNumOfResultsToShow" class="col-sm-4 col-form-label">Number of results <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Maximum number of results to show in the dropdown"></i></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="MaxNumOfResultsToShow" value="6" placeholder="Default 6">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDownStyle" class="col-sm-4 col-form-label">Style <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for the dropdown"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDownStyle" value="width: fit-content; filter: drop-shadow(gray 1px 6px 4px);" placeholder="width: fit-content; filter: drop-shadow(gray 1px 6px 4px);">
+                            </div>
+                        </div>
+                        <hr />
+
+
+                        <h6>Items Settings</h6>
+                        <p class="text-muted">Settings for the dropdown items (dropdown results)</p>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ItemsSettings_Class" class="col-sm-4 col-form-label">Class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom class for dropdown items"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_ItemsSettings_Class" value="" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ItemsSettings_Style" class="col-sm-4 col-form-label">Style <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for dropdown items"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_ItemsSettings_Style" value="background: transparent;" placeholder="background: transparent;">
+                            </div>
+                        </div>
+                        <hr />
+
+
+                        <h6>Search All Items Settings</h6>
+                        <span class="text-muted">Settings for the <strong>Search All Results</strong> button</span><br>
+                        <span class="text-muted">Clicking this button will perform search on all the dropdown items</span>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_SearchAllItemsSettings_Enabled" class="col-sm-4 col-form-label">Enabled <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Show button that lets you search all search result items"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_SearchAllItemsSettings_Enabled">
+                                    <option value="true">True</option>
+                                    <option value="false" selected>False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_SearchAllItemsSettings_Class" class="col-sm-4 col-form-label">Class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom class for the button"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_SearchAllItemsSettings_Class" value="text-danger" placeholder="text-danger">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_SearchAllItemsSettings_Style" class="col-sm-4 col-form-label">Style <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for the button"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_SearchAllItemsSettings_Style" value="" placeholder="Enter pure CSS style">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_SearchAllItemsSettings_Text" class="col-sm-4 col-form-label">Text <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom text for the button"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_SearchAllItemsSettings_Text" value="Search All Results" placeholder="Search All Results">
+                            </div>
+                        </div>
+                        <hr />
+
+
+                        <h6>HighScore Background Settings</h6>
+                        <p class="text-muted">This feature can mark highscored items inside the dropdown, so you can now see the best results in a different style</p>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ScoreSettings_MarkBG" class="col-sm-4 col-form-label">Mark items background <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Mark items background if they match the minimum score"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_ScoreSettings_MarkBG">
+                                    <option value="true" selected>True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ScoreSettings_MinHighScore" class="col-sm-4 col-form-label">Minimum score <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set the minimum score required to mark the item's background"></i></label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="DropDown_ScoreSettings_MinHighScore" value="100" placeholder="100">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ScoreSettings_Class" class="col-sm-4 col-form-label">Class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom class for the background of the marked items"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_ScoreSettings_Class" value="" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ScoreSettings_Style" class="col-sm-4 col-form-label">Class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for the background of the marked items"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_ScoreSettings_Style" value="box-shadow: 0px 0px 10px 1px #00456791;" placeholder="Enter pure CSS style">
+                            </div>
+                        </div>
+                        <hr />
+
+                        <h6>No Results Settings</h6>
+                        <span class="text-muted">This feature shows text inside the dropdown when there are no search results found</span>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_NoResultsSettings_Text" class="col-sm-4 col-form-label">Text <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set text to show when no results were found"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_NoResultsSettings_Text" value="No Results Found!" placeholder="No Results Found!">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_NoResultsSettings_Class" class="col-sm-4 col-form-label">Class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom class for the 'No Results Found' element"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_NoResultsSettings_Class" value="text-danger" placeholder="text-danger">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_NoResultsSettings_Style" class="col-sm-4 col-form-label">Style <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for the 'No Results Found' element"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_NoResultsSettings_Style" value="" placeholder="Enter pure CSS style">
+                            </div>
+                        </div>
+                        <hr />
+
+
+                        <h6>Words Highlight Settings</h6>
+                        <span class="text-muted">This feature highlights parts of the dropdown items text based on your search string</span><br>
+                        <span class="text-muted">Example: If you searched for <strong>Car</strong> it will highlight all <strong>Car</strong> words in dropdown items text</span>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_EnableHighlight" class="col-sm-4 col-form-label">Enable highlight <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Highlight the search words you typed"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_EnableHighlight">
+                                    <option value="true" selected>True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_HighlightClass" class="col-sm-4 col-form-label">Highlight class <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom class for highlighting"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_HighlightClass" value="" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_HighlightStyle" class="col-sm-4 col-form-label">Highlight style <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set custom style for highlighting"></i></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="DropDown_HighlightStyle" value="color: red;" placeholder="color: red;">
+                            </div>
+                        </div>
+                        <hr />
+
+                        <h6>Collapse Settings</h6>
+                        <span class="text-muted">Settings that changes how to show/hide the dropdown based on conditions</span><br>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_CollapseOnFocusLose" class="col-sm-4 col-form-label">Collapse on focus lose <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Collapse the dropdown when it loses focus (When you click outside the dropdown)"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_CollapseOnFocusLose">
+                                    <option value="true" selected>True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_HideOnItemPick" class="col-sm-4 col-form-label">Hide on item pick <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Hide dropdown after you pick item"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_HideOnItemPick">
+                                    <option value="true" selected>True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_ExpandOnSearchInputClick" class="col-sm-4 col-form-label">Show on search click <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Show the dropdown when you click on the search field"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_ExpandOnSearchInputClick">
+                                    <option value="true" selected>True</option>
+                                    <option value="false">False</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-3">
+                            <label for="DropDown_CollapseAnimation" class="col-sm-4 col-form-label">Collapse animation <i class="fa fa-circle-question" data-toggle="tooltip" data-placement="top" title="Set collapse animation of the dropdown (The way to show/hide the dropdown)"></i></label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="DropDown_CollapseAnimation">
+                                    <option value="slide" selected>Slide</option>
+                                    <option value="toggle">Toggle</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-primary" id="BTN_dropdown_settings">Save</button>
+                </div>
+
+                <div class="py-5">
+                    <hr/>
+                    <pre><code class="language-js" style="height: 50vh;">
+const source = [
+    {
+        "id": 1,
+        "title": "The Beetlejuice",
+        "year": "1988",
+        "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
+    },
+    {
+        "id": 2,
+        "title": "The Cotton Club",
+        "year": "1984",
+        "actors": "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee",
+    },
+    {
+        "id": 3,
+        "title": "The Shawshank Redemption",
+        "year": "1994",
+        "actors": "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
+    },
+    {
+        "id": 4,
+        "title": "Crocodile Dundee",
+        "year": "1986",
+        "actors": "Paul Hogan, Linda Kozlowski, John Meillon, David Gulpilil",
+    },
+    {
+        "id": 5,
+        "title": "Valkyrie",
+        "year": "2008",
+        "actors": "Tom Cruise, Kenneth Branagh, Bill Nighy, Tom Wilkinson",
+    },
+]
+                </code></pre>
+                    <small class="text-muted">Sample Data</small>
+                </div>
+                <div class="footer">
+                    <div class="pt-3">
+                        <h5 class="fuzzy-font">Built Using</h5>
+                        <img src="./assets/img/logos/bootstrap.svg" alt="" style="height: 50px;">
+                        <img src="./assets/img/logos/jquery.svg" alt="" style="height: 50px;">
+                        <img src="./assets/img/logos/javascript.svg" alt="" style="height: 50px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
+<script src="./assets/libs/prism.js"></script>
+<script src="./assets/js/script.js" type="module"></script>
+
+
+</body>
+
+</html>
+

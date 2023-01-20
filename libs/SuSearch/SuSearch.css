@@ -1,0 +1,63 @@
+
+.susearch-ul {
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 69, 103);
+    padding: 7px;
+    /*top: 60px;*/
+    overflow: auto;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    /*bottom: -220px;*/
+    /*bottom: -280px;*/
+    list-style-type: none;
+}
+
+.susearch-item {
+    cursor: pointer;
+    margin: 20px;
+    background: #8080801f;
+    border: 2px solid #3b8dbc26;
+    border-radius: 25px;
+    padding: 20px;
+    cursor: pointer;
+    padding-top: .25rem!important;
+    padding-bottom: .25rem!important;
+}
+
+.susearch-item:hover {
+    background: rgba(255, 122, 122, 0.3) !important;
+}
+
+
+
+.susearch-spinner {
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgb(0, 70, 103);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    /*position: absolute !important;*/
+    background: white;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

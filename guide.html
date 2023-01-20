@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SuSearch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/prism.css">
+    <link rel="stylesheet" href="./SuSearch/SuSearch.css">
+</head>
+<body>
+<link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet">
+<div class="app-container">
+    <div class="left-area">
+        <div class="app-name">Navigation</div>
+        <a href="index.html" class="item-link active">
+            Play Ground
+        </a>
+        <a href="guide.html" class="item-link">
+            Simple Guide
+        </a>
+        <a href="./Document/index.html" class="item-link" target="_blank">
+            Full Documentation
+        </a>
+        <p><strong>Demos</strong></p>
+        <a href="demo_1.html" class="item-link">
+            Country Search
+        </a>
+        <a href="demo_2.html" class="item-link">
+            Phone Search
+        </a>
+        <a href="demo_3.html" class="item-link">
+            Users Search
+        </a>
+        <a href="demo_4.html" class="item-link">
+            Products Search
+        </a>
+    </div>
+    <div class="main-area">
+        <section class="content-section">
+            <div class="col-sm-12">
+                <h1 class="fuzzy-font text-center"><strong>SuSearch</strong></h1>
+                <h5 class="fuzzy-font text-center">A Fuzzy JavaScript Library That Allows You To Search In A Large Amount Of Data</h5>
+                <hr />
+
+                <div class="py-3">
+                    <p>In order to get started with <strong>SuSearch</strong> you'll need to follow some steps, Don't worry its easy :)</p>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>jQuery</strong></p>
+                    <p>SuSearch needs jQuery in order to work, You can easily import it by using the code block below</p>
+                    <md-block>
+                        ```javascript
+                        // Import jQuery
+                        <<!>script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></1script>
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Import SuSearch Styling</strong></p>
+                    <p>SuSearch needs jQuery in order to work, You can easily import it by using the code block below</p>
+                    <md-block>
+                        ```html
+                        <<!>!-- SuSearch Style -->
+                        <<!>link rel="stylesheet" href="/Path/To/SuSearch/SuSearch.css">
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Import SuSearch</strong></p>
+                    <p>To import SuSearch script simply add this line to your <strong>.js</strong> file.</p>
+                    <md-block>
+                        ```javascript
+                        // Your script.js file
+                        import SuSearch from "/javascript/Classes/SuSearch/SuSearch.js" // SuSearch
+                        ```
+                    </md-block>
+
+                    <p class="pt-4">Please notice that your <strong>.js</strong> type should be <strong>module</strong>, Example:</p>
+                    <md-block>
+                        ```html
+                        <<!>!-- Your HTML file -->
+                        <<!>html>
+                        <<!>head>
+                            <<!>!-- SuSearch Style -->
+                            <<!>link rel="stylesheet" href="/Path/To/SuSearch/SuSearch.css">
+                        <<!>/head>
+                        <<!>body>
+                            <<!>!-- Script file that contains SuSearch settings -->
+                            <<!>script src="./assets/js/script.js" type="module"></script>
+                        <<!>/body>
+                        <<!>/html>
+                        ```
+                    </md-block>
+                    <md-block>
+                        ```javascript
+                        // Your script.js file
+                        import SuSearch from "/javascript/Classes/SuSearch/SuSearch.js" // SuSearch
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Set SuSearch Parent Div</strong></p>
+                    <p>In order for SuSearch to work, it needs a parent div</p>
+                    <md-block>
+                        ```html
+                        <<!>!-- SuSearch parent div -->
+                        <<!>div id="SuSearchParent"><<!>/div>
+                        ```
+                    </md-block>
+
+                    <p class="pt-3">Example</p>
+                    <md-block>
+                        ```html
+                        <<!>!-- Your HTML file -->
+                        <<!>html>
+                        <<!>head>
+                            <<!>!-- SuSearch Style -->
+                            <<!>link rel="stylesheet" href="/Path/To/SuSearch/SuSearch.css">
+                        <<!>/head>
+                        <<!>body>
+                            <<!>!-- SuSearch parent div -->
+                            <<!>div id="SuSearchParent"><<!>/div>
+
+                            <<!>!-- Script file that contains SuSearch settings -->
+                            <<!>script src="./assets/js/script.js" type="module"></script>
+                        <<!>/body>
+                        <<!>/html>
+                        ```
+                    </md-block>
+
+                    <p>Please notes</p>
+                    <ul>
+                        <li>Please note that the parent div must have a non-used id.</li>
+                        <li>Parent div can be placed anywhere you want in your page.</li>
+                    </ul>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Set SuSearch Data Source</strong></p>
+                    <p>SuSearch source needed to be set before doing any search.</p>
+                    <md-block>
+                        ```javascript
+                        // Usage
+                        const source = [
+                            {
+                                "id": 1,
+                                "title": "The Beetlejuice",
+                                "year": "1988",
+                                "runtime": "92",
+                                "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
+                            }
+                        ]
+
+                        SuSearch.set_search_source = source
+                        ```
+                    </md-block>
+                    <div class="pt-3"></div>
+                    <md-block>
+                        ```javascript
+                        // Example of your script.js file
+                        import SuSearch from "/javascript/Classes/SuSearch/SuSearch.js" // SuSearch
+
+                        const source = [
+                            {
+                                "id": 1,
+                                "title": "The Beetlejuice",
+                                "year": "1988",
+                                "runtime": "92",
+                                "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
+                            }
+                        ]
+
+                        SuSearch.set_search_source = source
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>SuSearch Options</strong></p>
+                    <p>SuSearch has its own default option that are used, You can manually change settings by using the following function.</p>
+                    <p class="text-muted"><strong>All options will be described at the bottom of the page.</strong></p>
+                    <md-block>
+                        ```javascript
+                        // Usage
+                        SuSearch.set_custom_options(_option [String], _settings [Object])
+                        ```
+                    </md-block>
+                    <div class="pt-3"></div>
+                    <md-block>
+                        ```javascript
+                        /**
+                        * Example: Set callback function when user clicks on one of the dropdown items
+                        * @param _item_value {String}
+                        * @param _item_text {String}
+                        * @param _item_data {Object}
+                        */
+                        const SuSearch_CallBackFunc = (_item_value, _item_text, _item_data) => {
+                            // _item_value => The value of the selected item
+                            // _item_text => The text of the selected item
+                            // _item_data => All the data of the selected item
+                        }
+
+                        SuSearch.set_custom_options('ItemsSettings', {
+                            Callback: SuSearch_CallBackFunc
+                        })
+                        ```
+                    </md-block>
+                    <div class="pt-3"></div>
+                    <md-block>
+                        ```javascript
+                        // Example: Enable "Search All Results" button inside the dropdown
+                        SuSearch.set_custom_options('SearchAllSettings', {
+                            State: true
+                        })
+                        ```
+                    </md-block>
+                    <div class="pt-3"></div>
+                    <md-block>
+                        ```javascript
+                        // Default SuSearch options
+                        const options = {
+                            debug: true,
+                            CaseSensitive: false,
+                            MaxNumOfSearches: 50, // Max number of searches to perform (0 for unlimited)
+                            KeysToSearchIn: ['id', 'name'], // Case sensitive
+                            CharactersToRemove: ['(', ')', '/', '-'], // Ignore characters from search string
+                            PercentOfPerfectScore: 100, // Get results that are at least this percent of the perfect score
+                            ParentDiv: 'SuSearchParent',
+                            NoDropDownSearchCallback: null,
+
+                            // Search input settings
+                            SearchInputSettings: {
+                                type: 'text',
+                                class: 'form-control',
+                                id: 'SuSearchSearchInput',
+                                autocomplete: 'off',
+                                placeholder: 'Search Here',
+                                dir: 'auto',
+                                style: 'display: grid; height: 50px; width: 50vh; margin: auto; text-align: center;',
+                                clear_on_pick: true,
+                                SplitSearchStringBy: ' ', // Split search words by character (default is 'space')
+                                SearchOnlyAfterFinishTyping: {
+                                    State: true,
+                                    Timer: 250,
+                                }
+                            },
+
+                            // Build dropdown
+                            BuildDropdown: {
+                                State: true,
+                                HighlightSettings: {
+                                    State: true,
+                                    class: '',
+                                    style: 'color: red'
+                                },
+                                ItemsSettings: {
+                                    class: '',
+                                    style: '',
+                                    Callback: SearchCallBack
+                                },
+                                SearchAllSettings: {
+                                    State: true,
+                                    class: 'text-danger',
+                                    style: '',
+                                    text: 'Search All Results',
+                                    Callback: SearchAllCallBack,
+                                },
+                                ScoreSettings: {
+                                    MarkBGOnHighScore: true,
+                                    MinHighScore: 100,
+                                    class: '',
+                                    style: 'box-shadow: 0px 0px 10px 1px #00456791;',
+                                },
+                                CollapseSettings: {
+                                    CollapseOnLoseFocus: true,
+                                    HideOnItemClick: true,
+                                    ExpandOnSearchInputClick: true,
+                                    CollapseAnimation: 'slide' // 'slide' or 'toggle'
+                                },
+                                ItemValueAndText: ['Barcode', 'Name'], // The value and text to put in the dropdown item | KEY, TEXT | Case sensitive
+                                    NoResultsSettings: {
+                                    text: 'No Results Found',
+                                    class: 'text-danger',
+                                    style: '',
+                                    Callback: '', // Callback function to run when no results are found
+                                },
+                                MaxNumOfResultsToShow: 6, // Max number of results to show in the dropdown
+                                DropDownStyle: 'width: 40% !important; filter: drop-shadow(gray 1px 6px 4px);', // Dropdown style
+                            }
+                        }
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Set Having Options</strong></p>
+                    <p>Having options is important in case you need to search for items that have a specific key.</p>
+                    <p>Setting having options can be done at any time, For example you can set the having option when a user selects item from select element</p>
+                    <p>For example, you want to search for all the items that have isOnSale=1, and this is what options are made for.</p>
+                    <ul>
+                        <li>Allowed operations: == === != !== > >= < <=</li>
+                        <li>Please note that you can set multiple options</li>
+                    </ul>
+                    <md-block>
+                        ```javascript
+                        // Usage
+                        SuSearch.set_having = [
+                            {
+                                key: 'Item key',
+                                operation: 'Your operation',
+                                value: 'Value you want'
+                            },
+                        ]
+                        ```
+                    </md-block>
+                    <div class="pt-3"></div>
+                    <md-block>
+                        ```javascript
+                        // Example of your script.js file
+                        import SuSearch from "/javascript/Classes/SuSearch/SuSearch.js" // SuSearch
+
+                        const source = [
+                            {
+                                "id": 1,
+                                "title": "Google Pixel 6 Pro",
+                                "isOnSale": "true",
+                                "Price": "3000",
+                                "Barcode": "123456789",
+                            }
+                        ]
+
+                        SuSearch.set_search_source = source
+
+
+                        // This only searches for items that have isOnSale===true and Price >= 1500
+                        SuSearchV2_C.set_having = [
+                            {
+                                key: 'isOnSale',
+                                operation: '===',
+                                value: 'true'
+                            },
+                            {
+                                key: 'Price',
+                                operation: '>=',
+                                value: '1500'
+                            },
+                        ]
+                        ```
+                    </md-block>
+
+                    <div class="pt-3">
+                        Full example
+                    </div>
+                    <md-block>
+                        ```html
+                        <<!>!-- Your HTML file -->
+                        <<!>html>
+                        <<!>body>
+                            <<!>select class="form-control" id="filter_isOnSale">
+                                <<!>option value="true">True<<!>/option>
+                                <<!>option value="false">False<<!>/option>
+                            <<!>/select>
+
+                            <<!>!-- Script file that contains SuSearch settings -->
+                            <<!>script src="./assets/js/script.js" type="module"></script>
+                        <<!>/body>
+                        <<!>/html>
+                        ```
+                    </md-block>
+                    <md-block>
+                        ```javascript
+                        // Example of your script.js file
+                        import SuSearch from "/javascript/Classes/SuSearch/SuSearch.js" // SuSearch
+
+                        $('#filter_isOnSale').on('change', () => {
+                            const selected = $('#filter_isOnSale').val() // true | false
+
+                            // This only searches for items that have isOnSale===true
+                            SuSearchV2_C.set_having = [
+                                {
+                                    key: 'isOnSale',
+                                    operation: '===',
+                                    value: selected'
+                                },
+                            ]
+                        })
+
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Initialize SuSearch</strong></p>
+                    <p>To initialize SuSearch, simply use this code line below:</p>
+                    <md-block>
+                        ```javascript
+                        SuSearch.init()
+                        ```
+                    </md-block>
+                    <div class="pt-3"></div>
+                    <md-block>
+                        ```javascript
+                        // Example of your script.js file
+                        import SuSearch from "/javascript/Classes/SuSearch/SuSearch.js" // SuSearch
+
+                        const source = [
+                            {
+                                "id": 1,
+                                "title": "The Beetlejuice",
+                                "year": "1988",
+                                "runtime": "92",
+                                "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
+                            }
+                        ]
+
+                        SuSearch.set_search_source = source
+                        SuSearch.init()
+                        ```
+                    </md-block>
+                </div>
+                <hr />
+
+                <div class="pt-5">
+                    <p><strong>Options Guide</strong></p>
+                    <p>The options are separated into different groups, as there are options for the search input and options for the dropdown…etc</p>
+
+                    <div class="table-responsive pt-5">
+                        <p><strong>Global options guide</strong></p>
+                        <table class="table table-striped table-hover table-bordered"><tbody><tr><td>&nbsp;</td><td><strong>Key</strong></td><td><strong>description</strong></td><td><strong>Type</strong></td><td><strong>required</strong></td><td><strong>Default Value</strong></td><td><strong>Case Sensitive</strong></td></tr><tr><td>1</td><td>debug</td><td>As it says, it's a debug :)</td><td>Boolean</td><td>✓</td><td>false</td><td style="height:26px;padding:8px 0px 8px 10px;">-</td></tr><tr><td>2</td><td>CaseSensitive</td><td>Toggle case sensitive when searching</td><td>Boolean</td><td>✓</td><td>false</td><td>-</td></tr><tr><td>3</td><td>MaxNumOfSearches</td><td>The number of searches for SuSearch to perform (Set 0 for unlimited)</td><td>Int</td><td>✓</td><td>0</td><td>✓</td></tr><tr><td>5</td><td>KeysToSearchIn</td><td>The object search to search in</td><td>Object</td><td>✓</td><td>['Name']</td><td>✓</td></tr><tr><td>6</td><td>CharactersToRemove</td><td>Characters to be removed from the search object and search string</td><td>Object</td><td>✓</td><td>['(', ')', '/', '-']</td><td>✓</td></tr><tr><td>7</td><td>PercentOfPerfectScore</td><td>Get items that are equal or more to the percent score</td><td>Int</td><td>✓</td><td>50</td><td>-</td></tr><tr><td>8</td><td>ParentDiv</td><td>The parent div where SuSearch will sit</td><td>String</td><td>✓</td><td>‘SuSearchParent’</td><td>-</td></tr><tr><td>9</td><td>NoDropDownSearchCallback</td><td><p>A callback after searching (Dropdown should be disabled)</p><p>&nbsp;</p><p>Function will receive all searched items data</p></td><td>Function</td><td>✖</td><td>noDropDownSearchCallBack</td><td>✓</td></tr><tr><td>9</td><td>SearchInputSettings</td><td>All search field settings&nbsp;</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>10</td><td>BuildDropdown</td><td>All dropdown settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr></tbody></table>
+                    </div>
+
+
+                    <div class="table-responsive pt-5">
+                        <p><strong>Search field settings</strong></p>
+                        <table class="table table-striped table-hover table-bordered"><tbody><tr><td>&nbsp;</td><td><strong>Key</strong></td><td><strong>Description</strong></td><td><strong>Type</strong></td><td><strong>Required</strong></td><td><strong>Default Value</strong></td><td><strong>Case Sensitive</strong></td></tr><tr><td>1</td><td>type</td><td>Type of search field</td><td>String</td><td>✓</td><td>text</td><td>✓</td></tr><tr><td>2</td><td>class</td><td>Class of the search field</td><td>String</td><td>✓</td><td>form-control</td><td>✓</td></tr><tr><td>3</td><td>id</td><td>ID of the search field</td><td>String</td><td>✓</td><td>SuSearchSearchInput</td><td style="height:26px;padding:8px 0px 8px 10px;">✖</td></tr><tr><td>4</td><td>autocomplete</td><td>Enable search field autocomplete</td><td>String</td><td style="height:26px;padding:8px 0px 8px 10px;">✓</td><td>off</td><td>✓</td></tr><tr><td>5</td><td>placeholder</td><td>Search field placeholder</td><td>String</td><td>✓</td><td>Search Items</td><td>✖</td></tr><tr><td>6</td><td>dir</td><td>Search field text direction</td><td>String</td><td>✓</td><td>auto</td><td>✓</td></tr><tr><td>7</td><td>style</td><td>Search field css style</td><td>String</td><td>✖</td><td>display: grid; height: 50px; width: 50vh; margin: auto; text-align: center;</td><td>✓</td></tr><tr><td>8</td><td>clear_on_pick</td><td>Enable clearing search field text after picking an item from dropdown</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>9</td><td>SplitSearchStringBy</td><td>Split search words by a specific character</td><td>String</td><td>✓</td><td>(Space)</td><td>✖</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>10</td><td>SearchOnlyAfterFinishTyping</td><td>Perform search only after user stops typing</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>10.1</td><td>State</td><td>Enable / disable</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>10.2</td><td>Timer</td><td>Time to wait for the user to finish typing</td><td>Int</td><td>✓</td><td>250</td><td>✓</td></tr></tbody></table>
+                    </div>
+
+
+
+                    <div class="table-responsive pt-5">
+                        <p><strong>Dropdown settings</strong></p>
+                        <table class="table table-striped table-hover table-bordered"><tbody><tr><td>&nbsp;</td><td><strong>Key</strong></td><td><strong>Description</strong></td><td><strong>Type</strong></td><td><strong>Required</strong></td><td><strong>Default Value</strong></td><td><strong>Case Sensitive</strong></td></tr><tr><td>1</td><td>State</td><td>Enable or disable dropdown</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>2</td><td>HighlightSettings</td><td>Highlight the matched search words in dropdown items</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>2.1</td><td>State</td><td>Enable or disable highlights</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>2.2</td><td>class</td><td>Highlight custom class</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>2.3</td><td>style</td><td>Highlight custom css style</td><td>String</td><td>✖</td><td>color: red</td><td>✖</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>3</td><td>ItemsSettings</td><td>Dropdown items settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>3.1</td><td>class</td><td>Dropdown items custom class</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>3.2</td><td>style</td><td>Dropdown items custom css style</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>3.3</td><td>Callback</td><td>Callback after clicking on the dropdown item</td><td>Function</td><td>✓</td><td>SearchCallBack</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>4</td><td>SearchAllSettings</td><td>Dropdown [Search All] button settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>4.1</td><td>State</td><td>Enable or disable [Search All] button</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>4.2</td><td>class</td><td>[Search All] Button custom class</td><td>String</td><td>✓</td><td>text-danger</td><td>✖</td></tr><tr><td>4.3</td><td>style</td><td>[Search All] Button custom css style</td><td>String</td><td>✓</td><td>(Empty)</td><td>✖</td></tr><tr><td>4.4</td><td>text</td><td>[Search All] Button text</td><td>String</td><td>✓</td><td>Search All Results</td><td>✖</td></tr><tr><td>4.5</td><td>Callback</td><td>Callback after clicking on the [Search All] button</td><td>Function</td><td>✓</td><td>SearchAllCallBack</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>5</td><td>ScoreSettings</td><td>Mark dropdown items that have reached a minimum score you set</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>5.1</td><td>MarkBGOnHighScore</td><td>Enable or disable marking items</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>5.2</td><td>MinHighScore</td><td>The minimum item's score is required to be marked</td><td>Int</td><td>✓</td><td>100</td><td>✓</td></tr><tr><td>5.3</td><td>class</td><td>Marking custom class</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>5.4</td><td>style</td><td>Marking custom css style</td><td>String</td><td>✖</td><td>box-shadow: 0px 0px 10px 1px #00456791;</td><td>✖</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>6</td><td>CollapseSettings</td><td>Dropdown collapse settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>6.1</td><td>CollapseOnLoseFocus</td><td>Hide dropdown when search field loses focus</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>6.2</td><td>HideOnItemClick</td><td>Hide dropdown after clicking on a dropdown item</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>6.3</td><td>ExpandOnSearchInputClick</td><td>Show dropdown after clicking/focus on the search field</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>6.4</td><td>CollapseAnimation</td><td>The animation of showing/hiding the dropdown [slide or toggle]</td><td>String</td><td>✓</td><td>slide</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>7</td><td>ItemValueAndText</td><td>The value and text of each item in the dropdown</td><td>Object</td><td>✓</td><td>['Barcode', 'Name']</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>8</td><td>NoResultsSettings</td><td>[No Results] settings that shows when no search results has been found</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>8.1</td><td>text</td><td>The text of [No Results]</td><td>String</td><td>✓</td><td>No Results Found!</td><td>✖</td></tr><tr><td>8.2</td><td>class</td><td>[No Results] custom class</td><td>String</td><td>✓</td><td>text-danger</td><td>✓</td></tr><tr><td>8.3</td><td>style</td><td>[No Results] custom css style</td><td>String</td><td>✓</td><td>(Empty)</td><td>✓</td></tr><tr><td>8.4</td><td>Callback</td><td>Callback function when click on [No Results]</td><td>Function</td><td>✖</td><td>(Empty)</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>9</td><td>MaxNumOfResultsToShow</td><td>The maximum number of items to show inside the dropdown</td><td>Int</td><td>✓</td><td>6</td><td>✓</td></tr><tr><td>10</td><td>DropDownStyle</td><td>Dropdown custom css style</td><td>String</td><td>✓</td><td>width: 40% !important; filter: drop-shadow(gray 1px 6px 4px);</td><td>✓</td></tr></tbody></table>
+                    </div>
+
+                </div>
+                <hr />
+
+                <div class="footer text-center">
+                    <div class="pt-3">
+                        <h5 class="fuzzy-font">Built Using</h5>
+                        <img src="./assets/img/logos/bootstrap.svg" alt="" style="height: 50px;">
+                        <img src="./assets/img/logos/jquery.svg" alt="" style="height: 50px;">
+                        <img src="./assets/img/logos/javascript.svg" alt="" style="height: 50px;">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!--    <div class="right-area">-->
+    <!--        <button class="btn-close-right">-->
+    <!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-x-circle" viewBox="0 0 24 24">-->
+    <!--                <defs/>-->
+    <!--                <circle cx="12" cy="12" r="10"/>-->
+    <!--                <path d="M15 9l-6 6M9 9l6 6"/>-->
+    <!--            </svg>-->
+    <!--        </button>-->
+    <!--        <div class="right-area-header-wrapper">-->
+    <!--            <p class="right-area-header">Downloads</p>-->
+    <!--            <button class="more-action"></button>-->
+    <!--        </div>-->
+    <!--        <div class="download-item-line">-->
+    <!--            <div class="line-header">Today</div>-->
+    <!--            <div class="download-area">-->
+    <!--                <div class="download-item-icon">-->
+    <!--                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="">-->
+    <!--                        <defs></defs>-->
+    <!--                        <circle cx="256" cy="256" r="256" fill="#4b50dd"></circle>-->
+    <!--                        <path fill="#f5f5f5" d="M192 64h176c4.4 0 8 3.6 8 8v328c0 4.4-3.6 8-8 8H120c-4.4 0-8-3.6-8-8V148l80-84z"></path>-->
+    <!--                        <path fill="#e6e6e6" d="M184 148c4.4 0 8-3.6 8-8V64l-80 84h72z"></path>-->
+    <!--                        <circle cx="352" cy="384" r="52" fill="#2179a6"></circle>-->
+    <!--                        <g fill="#f5f5f5" class="g">-->
+    <!--                            <path d="M352 416c-2.208 0-4-1.788-4-4v-56c0-2.212 1.792-4 4-4s4 1.788 4 4v56c0 2.212-1.792 4-4 4z"></path>-->
+    <!--                            <path d="M352 416a3.989 3.989 0 01-2.828-1.172l-20-20c-1.564-1.564-1.564-4.092 0-5.656s4.092-1.564 5.656 0L352 406.344l17.172-17.172c1.564-1.564 4.092-1.564 5.656 0s1.564 4.092 0 5.656l-20 20A3.989 3.989 0 01352 416z"></path>-->
+    <!--                        </g>-->
+    <!--                    </svg>-->
+    <!--                </div>-->
+    <!--                <div class="download-item-texts">-->
+    <!--                    <p class="download-text-header">Glitter.mp4</p>-->
+    <!--                    <p class="download-text-info">34.45 MB<span>Waiting for download</span></p>-->
+    <!--                </div>-->
+    <!--                <div class="download-icon">-->
+    <!--                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">-->
+    <!--                        <defs/>-->
+    <!--                        <path d="M403.939 295.749l-78.814 78.833V172.125c0-10.557-8.568-19.125-19.125-19.125s-19.125 8.568-19.125 19.125v202.457l-78.814-78.814c-7.478-7.478-19.584-7.478-27.043 0-7.478 7.478-7.478 19.584 0 27.042L289.208 431c4.59 4.59 10.863 6.005 16.812 4.953 5.929 1.052 12.221-.382 16.811-4.953l108.19-108.19c7.478-7.478 7.478-19.583 0-27.042-7.498-7.478-19.604-7.478-27.082-.019zM306 0C137.012 0 0 136.992 0 306s137.012 306 306 306 306-137.012 306-306S475.008 0 306 0zm0 573.75C158.125 573.75 38.25 453.875 38.25 306S158.125 38.25 306 38.25 573.75 158.125 573.75 306 453.875 573.75 306 573.75z"/>-->
+    <!--                    </svg>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="download-item-line">-->
+    <!--            <div class="line-header">Yesterday</div>-->
+    <!--            <div class="download-area">-->
+    <!--                <div class="download-item-icon">-->
+    <!--                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="">-->
+    <!--                        <defs></defs>-->
+    <!--                        <circle cx="256" cy="256" r="256" fill="#4bc0dd"></circle>-->
+    <!--                        <path fill="#f5f5f5" d="M192 64h176c4.4 0 8 3.6 8 8v328c0 4.4-3.6 8-8 8H120c-4.4 0-8-3.6-8-8V148l80-84z"></path>-->
+    <!--                        <path fill="#e6e6e6" d="M184 148c4.4 0 8-3.6 8-8V64l-80 84h72z"></path>-->
+    <!--                        <circle cx="352" cy="384" r="52" fill="#2179a6"></circle>-->
+    <!--                        <g fill="#f5f5f5" class="g">-->
+    <!--                            <path d="M352 416c-2.208 0-4-1.788-4-4v-56c0-2.212 1.792-4 4-4s4 1.788 4 4v56c0 2.212-1.792 4-4 4z"></path>-->
+    <!--                            <path d="M352 416a3.989 3.989 0 01-2.828-1.172l-20-20c-1.564-1.564-1.564-4.092 0-5.656s4.092-1.564 5.656 0L352 406.344l17.172-17.172c1.564-1.564 4.092-1.564 5.656 0s1.564 4.092 0 5.656l-20 20A3.989 3.989 0 01352 416z"></path>-->
+    <!--                        </g>-->
+    <!--                    </svg>-->
+    <!--                </div>-->
+    <!--                <div class="download-item-texts">-->
+    <!--                    <p class="download-text-header">Glitter.mp4</p>-->
+    <!--                    <div class="progress-bar">-->
+    <!--                        <span class="progress"></span>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="download-icon">-->
+    <!--                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="1 1 512 512">-->
+    <!--                        <defs/>-->
+    <!--                        <path d="M256 512C114.613 512 0 397.383 0 256S114.613 0 256 0s256 114.613 256 256c-.168 141.316-114.684 255.832-256 256zm0-480C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224c-.133-123.656-100.344-223.867-224-224zm0 0"/>-->
+    <!--                        <path d="M208 368c-8.836 0-16-7.164-16-16V160c0-8.836 7.164-16 16-16s16 7.164 16 16v192c0 8.836-7.164 16-16 16zm0 0M304 368c-8.836 0-16-7.164-16-16V160c0-8.836 7.164-16 16-16s16 7.164 16 16v192c0 8.836-7.164 16-16 16zm0 0"/>-->
+    <!--                    </svg>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="right-area-header-wrapper">-->
+    <!--            <p class="right-area-header">File Received</p>-->
+    <!--        </div>-->
+    <!--        <div class="received-item-line">-->
+    <!--            <div class="progress-line">-->
+    <!--                <span class="time start">15:30</span>-->
+    <!--                <span class="time end">18:30</span>-->
+    <!--            </div>-->
+    <!--            <div class="received-items-content">-->
+    <!--                <div class="received-files">-->
+    <!--                    <div class="image-wrapper">-->
+    <!--                        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"/>-->
+    <!--                    </div>-->
+    <!--                    <div class="image-wrapper">-->
+    <!--                        <img src="https://images.unsplash.com/photo-1498855926480-d98e83099315?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"/>-->
+    <!--                    </div>-->
+    <!--                    <div class="image-wrapper">-->
+    <!--                        <img src="https://images.unsplash.com/photo-1492648272180-61e45a8d98a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"/>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="received-files-info">-->
+    <!--                    Received <span class="info-purple">3 images</span> total  <span class="info-purple">50.3 MB</span>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></REMOVEME_script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script type="module" src="https://md-block.verou.me/md-block.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
+<script src="./assets/libs/prism.js"></script>
+<script src="./assets/js/script.js" type="module"></script>
+
+
+</body>
+
+</html>

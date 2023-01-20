@@ -1,0 +1,370 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>SuSearch Documentation</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		#description p {
+			line-height: 0.1px;
+		}
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+
+		<h3 class="center alt">&ldquo;SuSearch&rdquo; Documentation by &ldquo;Suleiman&rdquo; v1.0</h3>
+
+		<hr>
+
+		<h1 class="center"><strong>SuSearch</strong> - A Fuzzy JavaScript Search Plugin</h1>
+
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 19/10/2022<br>
+					By: Suleiman<br>
+					Email: <a href="mailto:soleman630@gmail.com">soleman630@gmail.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->
+
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://themeforest.net/user/USERNAME">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+
+		<hr>
+
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#whatIsSuSearch">What Is SuSearch</a></li>
+			<li><a href="#dependencies">Dependencies</a></li>
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#setupSuSearch">Import SuSearch</a></li>
+			<li><a href="#setSuSearchSource">Set SuSearch Source</a></li>
+			<li><a href="#setSuSearchCallbacks">Set SuSearch Callbacks</a></li>
+			<li><a href="#setDropdownItemValueAndText">Set Dropdown Items Value & Text</a></li>
+			<li><a href="#setSearchKeys">Set Search Keys</a></li>
+			<li><a href="#setHavingOptions">Set Having Options</a></li>
+			<li><a href="#setGlobalSettings">Set Global Settings</a></li>
+			<li><a href="#setSearchFieldSettings">Set Search Field Settings</a></li>
+			<li><a href="#setDropdownSettings">Set Dropdown Settings</a></li>
+			<li><a href="#initializeSuSearch">Initialize SuSearch</a></li>
+		</ol>
+		<br>
+
+		<p>Available Links</p>
+		<ul>
+			<li><strong>Try & Playground:</strong> <a href="../index.html" target="_blank">Playground</a></li>
+			<li><strong>Demo #1:</strong> <a href="../guide.html" target="_blank">Quick Guide</a></li>
+			<li><strong>Demo #2:</strong> <a href="../demo_2.html" target="_blank">Phone Search Demo</a></li>
+			<li><strong>Demo #3:</strong> <a href="../demo_3.html" target="_blank">Users Search Demo</a></li>
+			<li><strong>Demo #4:</strong> <a href="../demo_4.html" target="_blank">Products Search Demo</a></li>
+		</ul>
+
+		<hr>
+
+		<div id="description">
+			<div id="whatIsSuSearch">
+				<h3><strong>A) What Is SuSearch</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>SuSearch is a javascript plugin used to search in a large amount of data based on settings & conditions.</p>
+				<p>It can be used in any web application that needs to implement a fuzzy search.</p>
+
+				<br>
+				<p>SuSearch will show search results in a beautiful dropdown (will be described later in document)</p>
+
+				<br>
+				<p>It is worth to mention that SuSearch uses callbacks to handle actions.</p>
+				<p>Callbacks are important in each project, It handles user actions and send it to a callback function to handle it.</p>
+				<p>Each time you type/search SuSearch will handle these data and send it to a callback you set (will be described later in document).</p>
+
+				<br>
+				<p>You'd ask your self "What Is Fuzzy Search ?"</p>
+				<p>Well the answer for that is simple, A fuzzy search is a technique to search in data item by item to get the best matching results. </p>
+
+				<br>
+				<p>Examples:</p>
+				<ul>
+					<li>Search by phone number in a large data of numbers and phone number should be active = true.</li>
+					<li>Search for customers that their name ends with "smith" and age bigger than 37.</li>
+					<li>Search in products by product barcode and the product price should be less than $1,000.</li>
+				</ul>
+				<hr />
+			</div>
+
+			<div id="dependencies">
+				<h3><strong>B) Dependencies</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>SuSearch was built using <strong>jQuery</strong> and uses the styling of <strong>Bootstrap</strong>.</p>
+				<p>So make sure to include these libraries in your project (this will be described later in this document).</p>
+
+				<hr />
+			</div>
+
+			<div id="htmlStructure">
+				<h3><strong>C) HTML Structure</strong> - <a href="#toc">top</a></h3><br>
+
+					<p>Adding <strong>SuSearch</strong> to your project is simple, You'll need to include the following files:</p>
+					<ul>
+						<li>Bootstrap - <i>line 6</i></li>
+						<li>SuSearch style - <i>line 8</i></li>
+						<li>SuSearch parent div (search field will be automatically added inside it) - <i>line 12</i></li>
+						<li>jQuery library - <i>line 16</i></li>
+						<li>Bootstrap library - <i>line 18 + 19</i></li>
+						<li>Script that configures SuSearch (type of module) - <i>line 21</i></li>
+					</ul>
+
+					<img src="assets/images/htmlstructure.png" alt="HTML Structure" width="1000" /><br>
+					<small>File: index.html</small>
+				<hr />
+			</div>
+
+			<div id="setupSuSearch">
+				<h3><strong>D) Import SuSearch</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>In order to Import SuSearch you will need to create a script.js file (have a look at <i>HTML Structure -> image at line 21).</i></p>
+
+				<br>
+				<p>This line will import SuSearch.</p>
+				<img src="assets/images/importSuSearch.png" alt="" width="500">
+				<br><small>File: script.js</small>
+				<hr />
+			</div>
+
+			<div id="setSuSearchSource">
+				<h3><strong>E) Set SuSearch Source</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>In order to set SuSearch source you'll need a data object to pass to SuSearch (Tested with more than +3,000 data items).</p>
+				<p>The data you pass should be object only and <strong>NOT</strong> array.</p>
+
+				<img src="assets/images/setSuSearchSource.png" alt="" width="500"><br><br><br><br>
+
+				<p><strong>To set SuSearch source simple use:</strong> <i>line 17</i></p>
+				<img src="assets/images/setSuSearchSource2.png" alt="" width="700"><br>
+				<small>File: script.js</small><br>
+				<hr />
+			</div>
+
+			<div id="setSuSearchCallbacks">
+				<h3><strong>F) Set SuSearch Callbacks</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>Since SuSearch uses callbacks, You'll need to set the callbacks before using SuSearch.</p>
+
+				<p>Available callbacks</p>
+				<ul>
+					<li>Callback when there are no search results.</li>
+					<li>Callback when user pick item from dropdown.</li>
+					<li>Callback when user click "Search All Results" from the dropdown.</li>
+				</ul>
+
+				<img src="assets/images/dropdown1.png" alt="" width="250"><br>
+				<small>Results Found</small><br><br>
+				<img src="assets/images/dropdown_noresults.png" alt="" width="250"><br>
+				<small>No Results</small><br>
+
+
+				<br><br><br>
+				<p><strong>To set callbacks use the following code:</strong></p>
+
+				<br>
+				<p>Create your callbacks functions</p>
+				<img src="assets/images/create_callbacks.png" alt="" width="900"><br>
+				<small>This code can be found in: /Document/codes/set_callbacks.js</small><br><br><br><br>
+
+				<br>
+				<p>Pass callbacks to SuSearch</p>
+				<img src="assets/images/passcallbacks.png" alt="" width="900"><br>
+				<small>This code can be found in: /Document/codes/set_callbacks.js</small><br>
+				<hr />
+			</div>
+
+			<div id="setDropdownItemValueAndText">
+				<h3><strong>G) Set Dropdown Items Value & Text</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>In order to for callbacks to work you'll need to set dropdown items values & texts.</p>
+				<p>The <strong>id</strong> is for item value and <strong>name</strong> is for item text to de displayed for user.</p>
+
+				<img src="assets/images/setItemValueAndText.png" alt="" width="500"><br>
+				<small>This code can be found in: /Document/codes/set_dropdown_item_value_and_text.js</small><br><br><br><br>
+
+
+<!--				<p>For example: each dropdown item value will be equal to <strong>id</strong> and displayed text will be equal to <strong>name</strong>.</p>-->
+				<p>In this example we sent an object of customers, The customer key is <strong>id</strong> and the displayed text inside the dropdown is <strong>name</strong>.</p>
+				<img src="assets/images/dropdownItemValueAndTextWithExample.png" alt="" width="1200"><br><br><br><br>
+
+				<p>The value and text you set will be passed to the callback functions</p>
+
+
+				<p>This means that on each item click it will trigger the callback and send:</p>
+				<ul>
+					<li><strong>id</strong> as _item_value</li>
+					<li><strong>name</strong> as _item_text</li>
+					<li><strong>whole object</strong> as _item_data</li>
+				</ul>
+				<img src="assets/images/exampleone.png" alt="" width="800"><br>
+
+				<hr>
+			</div>
+
+			<div id="setSearchKeys">
+				<h3><strong>H) Set Search Keys</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>In order to search inside the object you'll need to set the <strong>Search Keys</strong></p>
+				<p><strong>Search Keys</strong> are basically keys inside your data source.</p>
+				<p>And on each search you perform SuSearch will do a search based on the <strong>Search Keys</strong> you set</p>.<br>
+
+				<p>In this example SuSearch will search only by <strong>id</strong> and <strong>name</strong>, This means if we wrote <strong>0</strong> or <strong>John</strong> it will show the first result.</p>
+
+				<img src="assets/images/setSearchKeys.png" alt="" width="500"><br>
+				<small>This code can be found in: /Document/codes/set_search_keys.js</small><br><br><br>
+
+				<p>Please note that the <strong>Search Keys</strong> can be changed to any key you want (case sensitive).</p>
+			<hr />
+			</div>
+
+			<div id="setHavingOptions">
+				<h3><strong>I) Set Having Options</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>Having options is important in case you need to search for items that have a specific key.</p>
+				<p>Setting having options can be done at any time, For example you can set the having option when a user selects item from select element</p>
+
+				<ul>
+					<li><strong>key:</strong> the key inside your source</li>
+					<li><strong>operation:</strong> can be one of the following operations: '==', '===', '!=', '!==', '>', '>=', '<', '<=' (without quotes)</li>
+					<li><strong>value:</strong> the value you want</li>
+				</ul>
+
+				<img src="assets/images/usageOfSetHavingOptions.png" alt="" width="400"><br><br><br>
+
+				<p>For example, you want to search for all customers that their age is bigger than 35.</p>
+				<p>Only <strong>John Smith</strong> will be displayed because his age is bigger than 35.</p>
+				<img src="assets/images/havingoption_agebiggerthan30.png" alt="" width="550"><br>
+				<small>This code can be found in: /Document/codes/set_having_options.js</small><br><br><br><br>
+
+				<p>For example, you want to search for all customers that their age is smaller/equal to 30 and is female.</p>
+				<p>Only <strong>Hanna Hayner</strong> will be displayed because his age is smaller/equal to 30 and is female.</p>
+				<img src="assets/images/sethavingoption_example2.png" alt="" width="700"><br>
+				<small>This code can be found in: /Document/codes/set_having_options.js</small><br><br><br><br>
+
+
+				<p>Please note that setting having option can happen at any time.</p>
+				<p>For example: You want to search by specific customer type when user uses select element.</p>
+				<img src="assets/images/example_havingoption_select.png" alt="" width="700"><br>
+				<small>This code can be found in: /Document/codes/set_having_options_select_example.js</small><br><br><br><br>
+				<hr />
+			</div>
+
+			<div id="setGlobalSettings">
+				<h3><strong>J) Set Global Settings</strong> - <a href="#toc">top</a></h3><br>
+				<img src="assets/images/setglobalsettingscode.png" alt="" width="1000"><br>
+				<small>This code can be found in: /Document/codes/set_global_settings.js</small><br><br><br><br>
+
+				<p><strong>Available options:</strong></p>
+				<table class="table table-striped table-hover table-bordered"><tbody><tr><td>&nbsp;</td><td><strong>Key</strong></td><td><strong>description</strong></td><td><strong>Type</strong></td><td><strong>required</strong></td><td><strong>Default Value</strong></td><td><strong>Case Sensitive</strong></td></tr><tr><td>1</td><td>debug</td><td>As it says, it's a debug :)</td><td>Boolean</td><td>✓</td><td>false</td><td style="height:26px;padding:8px 0px 8px 10px;">-</td></tr><tr><td>2</td><td>CaseSensitive</td><td>Toggle case sensitive when searching</td><td>Boolean</td><td>✓</td><td>false</td><td>-</td></tr><tr><td>3</td><td>MaxNumOfSearches</td><td>The number of searches for SuSearch to perform (Set 0 for unlimited)</td><td>Int</td><td>✓</td><td>0</td><td>✓</td></tr><tr><td>5</td><td>KeysToSearchIn</td><td>The object search to search in</td><td>Object</td><td>✓</td><td>['Name']</td><td>✓</td></tr><tr><td>6</td><td>CharactersToRemove</td><td>Characters to be removed from the search object and search string</td><td>Object</td><td>✓</td><td>['(', ')', '/', '-']</td><td>✓</td></tr><tr><td>7</td><td>PercentOfPerfectScore</td><td>Get items that are equal or more to the percent score</td><td>Int</td><td>✓</td><td>50</td><td>-</td></tr><tr><td>8</td><td>ParentDiv</td><td>The parent div where SuSearch will sit</td><td>String</td><td>✓</td><td>‘SuSearchParent’</td><td>-</td></tr><tr><td>9</td><td>SearchInputSettings</td><td>All search field settings&nbsp;</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>10</td><td>BuildDropdown</td><td>All dropdown settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr></tbody></table>
+<!--				<img src="assets/images/globalSettingsTable.png" alt="" width="1200"><br><br><br>-->
+				<hr />
+			</div>
+
+			<div id="setSearchFieldSettings">
+				<h3><strong>K) Set Search Field Settings</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>Search field is the input you use to search with.</p>
+				<img src="assets/images/searchfield.png" alt="" width="400"><br><br><br>
+
+				<p>You can set custom settings for this input, Example:</p>
+				<img src="assets/images/setSearchFieldSettings.png" alt="" width="1200"><br>
+				<small>This code can be found in: /Document/codes/set_search_field_settings.js</small><br><br><br><br>
+
+				<p><strong>Available options:</strong></p>
+				<table class="table table-striped table-hover table-bordered"><tbody><tr><td>&nbsp;</td><td><strong>Key</strong></td><td><strong>Description</strong></td><td><strong>Type</strong></td><td><strong>Required</strong></td><td><strong>Default Value</strong></td><td><strong>Case Sensitive</strong></td></tr><tr><td>1</td><td>type</td><td>Type of search field</td><td>String</td><td>✓</td><td>text</td><td>✓</td></tr><tr><td>2</td><td>class</td><td>Class of the search field</td><td>String</td><td>✓</td><td>form-control</td><td>✓</td></tr><tr><td>3</td><td>id</td><td>ID of the search field</td><td>String</td><td>✓</td><td>SuSearchSearchInput</td><td style="height:26px;padding:8px 0px 8px 10px;">✖</td></tr><tr><td>4</td><td>autocomplete</td><td>Enable search field autocomplete</td><td>String</td><td style="height:26px;padding:8px 0px 8px 10px;">✓</td><td>off</td><td>✓</td></tr><tr><td>5</td><td>placeholder</td><td>Search field placeholder</td><td>String</td><td>✓</td><td>Search Items</td><td>✖</td></tr><tr><td>6</td><td>dir</td><td>Search field text direction</td><td>String</td><td>✓</td><td>auto</td><td>✓</td></tr><tr><td>7</td><td>style</td><td>Search field css style</td><td>String</td><td>✖</td><td>display: grid; height: 50px; width: 50vh; margin: auto; text-align: center;</td><td>✓</td></tr><tr><td>8</td><td>clear_on_pick</td><td>Enable clearing search field text after picking an item from dropdown</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>9</td><td>SplitSearchStringBy</td><td>Split search words by a specific character</td><td>String</td><td>✓</td><td>(Space)</td><td>✖</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>10</td><td>SearchOnlyAfterFinishTyping</td><td>Perform search only after user stops typing</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>10.1</td><td>State</td><td>Enable / disable</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>10.2</td><td>Timer</td><td>Time to wait for the user to finish typing</td><td>Int</td><td>✓</td><td>250</td><td>✓</td></tr></tbody></table>
+<!--				<img src="assets/images/searchFieldSettingsTable.png" alt="" width="1200"><br>-->
+				<hr />
+			</div>
+
+			<div id="setDropdownSettings">
+				<h3><strong>L) Set Dropdown Settings</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>Dropdown settings contains settings for:</p>
+				<ul>
+					<li>Highlight settings - <i>HighlightSettings - line 5</i></li>
+					<ul>Highlight the matched search words in dropdown items</ul>
+					<li>Dropdown items settings - <i>ItemsSettings - line 11</i></li>
+					<ul>Dropdown items settings</ul>
+					<li>Search All Results button settings - <i>SearchAllSettings - line 17</i></li>
+					<ul>Dropdown [Search All] button settings</ul>
+					<li>Score settings - <i>ScoreSettings - line 25</i></li>
+					<ul>Mark dropdown items that have reached a minimum score you set</ul>
+					<li>Dropdown collapse settings - <i>CollapseSettings - line 32</i></li>
+					<ul>Dropdown collapse settings</ul>
+					<li>Dropdown items value and text - <i>ItemValueAndText - line 38</i></li>
+					<ul>The value and text of each item in the dropdown</ul>
+					<li>No Results callback settings - <i>NoResultsSettings - line 39</i></li>
+					<ul>[No Results] settings that shows when no search results has been found</ul>
+					<li>Max results to show in dropdown - <i>MaxNumOfResultsToShow - line 45</i></li>
+					<ul>The maximum number of items to show inside the dropdown</ul>
+					<li>Dropdown custom style - <i>DropDownStyle - line 46</i></li>
+					<ul>Dropdown custom css style</ul>
+				</ul>
+
+				<img src="assets/images/dropdownsettings.png" alt="" width="1200"><br>
+				<small>This code can be found in: /Document/codes/set_dropdown_settings.js</small><br><br><br><br>
+
+				<style>
+					table {
+						font-family: Arial, Helvetica, sans-serif;
+						border-collapse: collapse;
+						width: 100%;
+					}
+
+					table td, table th {
+						border: 1px solid #ddd;
+						padding: 8px;
+					}
+
+					table tr:nth-child(even){background-color: #f2f2f2;}
+
+					table tr:hover {background-color: #ddd;}
+
+					table th {
+						padding-top: 12px;
+						padding-bottom: 12px;
+						text-align: left;
+						background-color: #04AA6D;
+						color: white;
+					}
+				</style>
+				<p><strong>Available options:</strong></p>
+				<table class="table table-striped table-hover table-bordered"><tbody><tr><td>&nbsp;</td><td><strong>Key</strong></td><td><strong>Description</strong></td><td><strong>Type</strong></td><td><strong>Required</strong></td><td><strong>Default Value</strong></td><td><strong>Case Sensitive</strong></td></tr><tr><td>1</td><td>State</td><td>Enable or disable dropdown</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>2</td><td>HighlightSettings</td><td>Highlight the matched search words in dropdown items</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>2.1</td><td>State</td><td>Enable or disable highlights</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>2.2</td><td>class</td><td>Highlight custom class</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>2.3</td><td>style</td><td>Highlight custom css style</td><td>String</td><td>✖</td><td>color: red</td><td>✖</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>3</td><td>ItemsSettings</td><td>Dropdown items settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>3.1</td><td>class</td><td>Dropdown items custom class</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>3.2</td><td>style</td><td>Dropdown items custom css style</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>3.3</td><td>Callback</td><td>Callback after clicking on the dropdown item</td><td>Function</td><td>✓</td><td>SearchCallBack</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>4</td><td>SearchAllSettings</td><td>Dropdown [Search All] button settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>4.1</td><td>State</td><td>Enable or disable [Search All] button</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>4.2</td><td>class</td><td>[Search All] Button custom class</td><td>String</td><td>✓</td><td>text-danger</td><td>✖</td></tr><tr><td>4.3</td><td>style</td><td>[Search All] Button custom css style</td><td>String</td><td>✓</td><td>(Empty)</td><td>✖</td></tr><tr><td>4.4</td><td>text</td><td>[Search All] Button text</td><td>String</td><td>✓</td><td>Search All Results</td><td>✖</td></tr><tr><td>4.5</td><td>Callback</td><td>Callback after clicking on the [Search All] button</td><td>Function</td><td>✓</td><td>SearchAllCallBack</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>5</td><td>ScoreSettings</td><td>Mark dropdown items that have reached a minimum score you set</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>5.1</td><td>MarkBGOnHighScore</td><td>Enable or disable marking items</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>5.2</td><td>MinHighScore</td><td>The minimum item's score is required to be marked</td><td>Int</td><td>✓</td><td>100</td><td>✓</td></tr><tr><td>5.3</td><td>class</td><td>Marking custom class</td><td>String</td><td>✖</td><td>(Empty)</td><td>✖</td></tr><tr><td>5.4</td><td>style</td><td>Marking custom css style</td><td>String</td><td>✖</td><td>box-shadow: 0px 0px 10px 1px #00456791;</td><td>✖</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>6</td><td>CollapseSettings</td><td>Dropdown collapse settings</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>6.1</td><td>CollapseOnLoseFocus</td><td>Hide dropdown when search field loses focus</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>6.2</td><td>HideOnItemClick</td><td>Hide dropdown after clicking on a dropdown item</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>6.3</td><td>ExpandOnSearchInputClick</td><td>Show dropdown after clicking/focus on the search field</td><td>Boolean</td><td>✓</td><td>true</td><td>✓</td></tr><tr><td>6.4</td><td>CollapseAnimation</td><td>The animation of showing/hiding the dropdown [slide or toggle]</td><td>String</td><td>✓</td><td>slide</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>7</td><td>ItemValueAndText</td><td>The value and text of each item in the dropdown</td><td>Object</td><td>✓</td><td>['Barcode', 'Name']</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>8</td><td>NoResultsSettings</td><td>[No Results] settings that shows when no search results has been found</td><td>Object</td><td>✓</td><td>-</td><td>-</td></tr><tr><td>8.1</td><td>text</td><td>The text of [No Results]</td><td>String</td><td>✓</td><td>No Results Found!</td><td>✖</td></tr><tr><td>8.2</td><td>class</td><td>[No Results] custom class</td><td>String</td><td>✓</td><td>text-danger</td><td>✓</td></tr><tr><td>8.3</td><td>style</td><td>[No Results] custom css style</td><td>String</td><td>✓</td><td>(Empty)</td><td>✓</td></tr><tr><td>8.4</td><td>Callback</td><td>Callback function when click on [No Results]</td><td>Function</td><td>✖</td><td>(Empty)</td><td>✓</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>9</td><td>MaxNumOfResultsToShow</td><td>The maximum number of items to show inside the dropdown</td><td>Int</td><td>✓</td><td>6</td><td>✓</td></tr><tr><td>10</td><td>DropDownStyle</td><td>Dropdown custom css style</td><td>String</td><td>✓</td><td>width: 40% !important; filter: drop-shadow(gray 1px 6px 4px);</td><td>✓</td></tr></tbody></table>
+<!--				<img src="assets/images/dropdownsettingstable_1.png" alt="" width="1200"><br><br>-->
+<!--				<img src="assets/images/dropdownsettingstable_2.png" alt="" width="1200"><br><br>-->
+<!--				<img src="assets/images/dropdownsettingstable_3.png" alt="" width="1200"><br>-->
+
+				<hr />
+			</div>
+
+			<div id="initializeSuSearch">
+				<h3><strong>J) Initialize SuSearch</strong> - <a href="#toc">top</a></h3><br>
+
+				<p>initialize SuSearch means preparing it for, simply use this code line below:</p>
+				<pre>
+SuSearch.init()
+				</pre>
+
+				<hr />
+			</div>
+
+		</div>
+	</div><!-- end div .container -->
+</body>
+</html>
