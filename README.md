@@ -42,3 +42,11 @@ Examples:
         <li><strong>Demo #3:</strong> <a href="https://www.nicurb.com/SuSearch/demo_3.html" target="_blank">Users Search Demo</a></li>
         <li><strong>Demo #4:</strong> <a href="https://www.nicurb.com/SuSearch/demo_4.html" target="_blank">Products Search Demo</a></li>
 		</ul>
+		
+		
+		
+---
+
+Feel free to use and modify the code in this repository.
+
+However, if you do, please give credit by including a mention or link to this repository.
