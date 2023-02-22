@@ -1,5 +1,7 @@
 # SuSearch
-A Fuzzy JavaScript Library That Allows You To Search In A Large Amount Of Data
+
+Introducing SuSearch, the JavaScript plugin for fast and efficient fuzzy search in large datasets.
+With SuSearch, you can easily search based on specific settings and conditions, using a powerful algorithm and a sleek dropdown display of results. SuSearch is the go-to tool for developers who need customizable fuzzy search functionality in their web applications.
 
 ---
 
@@ -9,9 +11,7 @@ SuSearch is a javascript plugin used to search in a large amount of data based o
 
 It can be used in any web application that needs to implement a fuzzy search.
 
-
 SuSearch will show search results in a beautiful dropdown
-
 
 It is worth to mention that SuSearch uses callbacks to handle actions.
 
