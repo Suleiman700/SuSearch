@@ -40,7 +40,7 @@ Examples:
 <ul>
         <li><strong>Try &amp; Playground:</strong> <a href="https://wegate.net/projects/SuSearch//index.html" target="_blank">Playground</a></li>
         <li><strong>Demo #1:</strong> <a href="https://wegate.net/projects/SuSearch/guide.html" target="_blank">Quick Guide</a></li>
-        <li><strong>Demo #2:</strong> <a href="https://www.nicurb.com/SuSearch/demo_2.html" target="_blank">Phone Search Demo</a></li>
+        <li><strong>Demo #2:</strong> <a href="https://wegate.net/projects/SuSearch/demo_2.html" target="_blank">Phone Search Demo</a></li>
         <li><strong>Demo #3:</strong> <a href="https://wegate.net/projects/SuSearch/demo_3.html" target="_blank">Users Search Demo</a></li>
         <li><strong>Demo #4:</strong> <a href="https://wegate.net/projects/SuSearch/demo_4.html" target="_blank">Products Search Demo</a></li>
 		</ul>
